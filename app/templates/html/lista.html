@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitList | List</title>
+</head>
+<body>
+    <div>
+        <h1>Perfis:</h1>
+        {% if perfis %}
+            {% for perfil in perfis %}
+                <div>
+
+                    <img width="150" src="{{ perfil.img }}"/>
+
+                    <div>
+
+                        <div>
+                        {% if perfil.nome %}
+                            <p id="nome">{{ perfil.nome }}</p>
+                            <p id="login">{{ perfil.login }}</p>
+                        {% else %}
+                            <p id="nome">{{ perfil.login }}</p>
+                        {% endif %}
+                        </div>
+
+                        {% if perfil.bio %}
+                            <p>{{perfil.bio}}</p>
+                        {% endif %}
+
+                        <div>
+                            <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
+                            <a href="{% url 'retirar-perfil' perfil.id %}"><button>Retirar da lista</button></a>
+                            <a><button>Alterar</button></a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nenhum perfil encontrado</p>
+        {% endif %}
+        <a href="{% url 'adicionar-perfil' %}"><button>Adicionar perfil</button></a>
+    </div>
+</body>
+</html>
