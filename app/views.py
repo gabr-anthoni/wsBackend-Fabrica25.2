@@ -1,5 +1,5 @@
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import GitHubPerfil
 import requests
 
@@ -58,3 +58,40 @@ def retirar_perfil(request, pk):
         perfil.delete()
         return redirect('lista-perfis')
     return render(request, 'html/retirar.html', {'perfil': perfil})
+
+# Alterar perfil da lista
+def alterar_perfil(request, pk):
+    perfil = get_object_or_404(GitHubPerfil, pk=pk)
+
+    if request.method == 'POST':
+        
+        # Pegar o input da página 'alterar.html'
+        username = request.POST.get('login-perfil')
+        # Testa na API do github
+        url = f"https://api.github.com/users/{username}"
+        # Resposta
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            # Pegar resposta em json, é tipo biblioteca em python
+            data = response.json()
+
+            # Alterar informações
+            perfil.img   = data.get('avatar_url')
+            perfil.nome  = data.get('name') or ''
+            perfil.login = data.get('login')
+            perfil.site  = data.get('html_url')
+            perfil.bio   = data.get('bio') or ''
+            try:
+                perfil.save()
+                return redirect('lista-perfis')
+            except Exception: # ERRO DE PERFIL JÁ NA LISTA
+                erro = f"Perfil '{username}' já está na lista"
+                return render(request, 'html/adicionar.html', {'erro': erro})
+            
+            
+        else: # ERRO DE PERFIL NÃO ENCONTRADO
+            erro = f"Usuário '{username}' não encontrado."
+            return render(request, 'html/alterar.html', {'erro': erro})
+
+    return render(request, 'html/alterar.html', {'perfil': perfil})

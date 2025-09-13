@@ -32,7 +32,7 @@
                         <div>
                             <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
                             <a href="{% url 'retirar-perfil' perfil.id %}"><button>Retirar da lista</button></a>
-                            <a><button>Alterar</button></a>
+                            <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
                         </div>
                     </div>
                 </div>
