@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitList | List</title>
-    <link rel="stylesheet" href="{% static 'css/liststyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/list.css' %}">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body>
@@ -26,8 +26,6 @@
             {% for perfil in perfis %}
                 <div id="perfil">
 
-                    <img width="150" src="{{ perfil.img }}"/>
-
                     <div id="informações">
 
                         <div>
@@ -39,53 +37,24 @@
                         {% endif %}
                         </div>
 
-                        {% if perfil.bio %}
-                            {% if perfil.bio|length > 80 %} <!--Quantidade de carcteres até ele quebrar a linha-->
-                                <p id="bio">{{ perfil.bio|slice:":80" }}</p>
-                                <p id="bio">{{ perfil.bio|slice:":80" }}</p>
-
-                                <div id="opções">
-                                    <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
-                                    <a href="{% url 'retirar-perfil' perfil.id %}"><button>Remover da lista</button></a>
-                                    <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
-                                </div>
-                            {% else %}
-                                <p id="bio">{{perfil.bio}}</p>
-                                <div id="opções2">
-                                    <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
-                                    <a href="{% url 'retirar-perfil' perfil.id %}"><button>Remover da lista</button></a>
-                                    <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
-                                </div>
-                            {% endif %}
+                    </div>
+                    <div>
+                        {% if not perfil.nome %}
+                            <a href="{% url 'ver-perfil' perfil.id %}"><button id="buttonlogin">Informações</button></a>
+                        {% else %}
+                            <a href="{% url 'ver-perfil' perfil.id %}"><button>Informações</button></a>
                         {% endif %}
-
-                        {% if not perfil.bio and perfil.nome %}
-                            <div id="opções3">
-                                <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
-                                <a href="{% url 'retirar-perfil' perfil.id %}"><button>Remover da lista</button></a>
-                                <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
-                            </div>
-                        {% elif not perfil.bio and not perfil.nome %}
-                            <div id="opções4">
-                                <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
-                                <a href="{% url 'retirar-perfil' perfil.id %}"><button>Remover da lista</button></a>
-                                <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
-                            </div>
-                        {% endif %}
-
                     </div>
                 </div>
             {% endfor %}
         {% else %}
-
             <p id="Vazio">Nenhum perfil encontrado</p>
-
         {% endif %}
 
         <a href="{% url 'adicionar-perfil' %}"><button id="adicionar">Adicionar perfil</button></a>
         
         {% if perfis|length > 1 %}
-            <a href="{% url 'limpar-lista' %}"><button id="adicionar">Limpar lista</button></a>
+            <a href="{% url 'limpar-lista' %}"><button id="limpar">Limpar lista</button></a>
         {% endif %}
     </div>
 </body>

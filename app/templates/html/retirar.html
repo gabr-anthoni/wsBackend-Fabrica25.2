@@ -23,7 +23,7 @@
     <div id="delete">
         <form method="post">
             {% csrf_token %}
-            <img  width="250" src="{{perfil.img}}"/>
+            <img  width="250" src="{{infos.img}}"/>
             {% if perfil.nome %}
                 <h1>Deseja retirar {{perfil.nome}} da sua lista de perfis?</h1>
             {% else %}

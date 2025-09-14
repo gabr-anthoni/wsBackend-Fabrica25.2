@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitList | {{perfil.login}}</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+</head>
+<body>
+    <header>
+        <img width="50" id="githublogo" src="{% static 'img/github.png' %}"
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'lista-perfis' %}">Lista</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div id="perfil">
+        <a href="{% url 'lista-perfis' %}"><button id="voltar">Voltar</button></a>
+        <img width="200" src="{{infos.img}}">
+        <div>
+            {% if perfil.nome %}
+                <h1>{{perfil.nome}}</h1>
+                <p id="login">{{perfil.login}}</p>
+            {% else %}
+                <h1>{{perfil.login}}</h1>
+            {% endif %}
+        </div>
+        <div>
+            {% if infos.bio %}
+                {% if infos.bio|length > 80 %} <!--Quantidade de carcteres até ele quebrar a linha-->
+                    <p id="bio">{{ infos.bio|slice:":80" }}</p>
+                    <p id="bio">{{ infos.bio|slice:":80" }}</p>
+                {% else %}
+                    <p id="bio">{{ infos.bio }}</p>
+                {% endif %}
+            {% else %}
+                <p id="bioVazia">Sem bio</p>
+            {% endif %}
+        </div>
+        <div id="opções">
+            <a href="{{ infos.site }}" target="_blank"><button>Ver Perfil GitHub</button></a>
+            <a href="{% url 'retirar-perfil' perfil.id %}"><button>Remover da lista</button></a>
+            <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
+        </div>
+    </div>
+</body>
+</html>
