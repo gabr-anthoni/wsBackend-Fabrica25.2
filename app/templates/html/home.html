@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
+    <!--CABEÇALHO-->
     <header>
         <img width="50" id="githublogo" src="{% static 'img/github.png' %}"
         <div class="container">
@@ -18,8 +19,10 @@
             </ul>
         </div>
     </header>
+
     <div id="começo">
-        <h1>GitList</h1>
+        <h1 id="nome">GitList</h1>
+        <h3 id="quantidade">Perfis na lista: {{valor}}</h3>
         <img width="200" id="imggirar" src="{% static 'img/github.png' %}">
         <p id="paragrafo">Faça uma lista com perfis de usuários do GitHub</p>
         <a href="{% url 'lista-perfis' %}"><button>Começar</button></a>

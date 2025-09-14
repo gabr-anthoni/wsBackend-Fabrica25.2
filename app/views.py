@@ -3,16 +3,19 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import GitHubPerfil
 import requests
 
-# Home
+# Home ==============================================================================
 def home(request):
-    return render(request, 'html/home.html')
+    # Quantidade de perfis salvos na lista
+    quantidade_de_perfis = GitHubPerfil.objects.all().count()
+    return render(request, 'html/home.html', {"valor": quantidade_de_perfis})
 
-# Lista de perfis
+# Lista de perfis ===================================================================
 def listar_perfis(request):
+    # Perfis com todas a suas informações
     perfis = GitHubPerfil.objects.all()
     return render(request, 'html/lista.html', {'perfis':perfis})
 
-# Adicionar perfil a lista
+# Adicionar perfil a lista ==========================================================
 def adicionar_perfil(request):
     if request.method == 'POST':
         # Pegar o input da página 'adicionar.html'
@@ -49,7 +52,7 @@ def adicionar_perfil(request):
 
     return render(request, 'html/adicionar.html')
 
-# Retirar perfil da lista
+# Retirar perfil da lista ===========================================================
 def retirar_perfil(request, pk):
     # Pegar pefil pelo ID/PK
     perfil = GitHubPerfil.objects.get(pk=pk)
@@ -59,7 +62,7 @@ def retirar_perfil(request, pk):
         return redirect('lista-perfis')
     return render(request, 'html/retirar.html', {'perfil': perfil})
 
-# Alterar perfil da lista
+# Alterar perfil da lista ===========================================================
 def alterar_perfil(request, pk):
     perfil = get_object_or_404(GitHubPerfil, pk=pk)
     # Salvar o essencial.
@@ -99,10 +102,13 @@ def alterar_perfil(request, pk):
 
     return render(request, 'html/alterar.html', {'img': img_save,'nome': nome_save})
 
+# limpar lista ======================================================================
 def limpar_lista(request):
+    # Pegar tudo do primeiro perfil
     primeiro_perfil = GitHubPerfil.objects.all().first()
+    # Pegar tudo do segundo perfil
     ultimo_perfil = GitHubPerfil.objects.all().last()
     if request.method == 'POST':
-        GitHubPerfil.objects.all().delete()
+        GitHubPerfil.objects.all().delete() # Pega todos os perfis e deleta
         return redirect('lista-perfis')
     return render(request, 'html/cls.html', {"img1": primeiro_perfil.img, "img2": ultimo_perfil.img})

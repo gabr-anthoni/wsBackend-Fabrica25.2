@@ -31,11 +31,11 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 65vh;
+    height: 70vh;
 }
 
-#paragrafo {
-    margin-top: 20px;
+h3 {
+    margin-top: 0;
 }
 
 button {
