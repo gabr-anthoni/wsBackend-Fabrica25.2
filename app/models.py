@@ -15,7 +15,7 @@ class GitHubNome(models.Model):
     class Meta:
         # Nomes que vão aparecer no django admin
         verbose_name = "Perfil do GitHub"
-        verbose_name_plural = "Lista de perfis GitHub" # (Por algum motivo, só este funciona)
+        verbose_name_plural = "Perfis do GitHub" # (Por algum motivo, só este funciona)
 
     # Como ele vai aparecer lá no django Admin
     def __str__(self):
@@ -40,5 +40,5 @@ class GitHubInfo(models.Model):
         return f"informações ({self.perfil.login})"
     
     class Meta:
-        verbose_name = "Estatisticas do GitHub"
-        verbose_name_plural = "Estatisticas do GitHub"
+        verbose_name = "informações do GitHub"
+        verbose_name_plural = "informações do GitHub"

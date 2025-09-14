@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
 </head>
 <body>
+    <!--CABEÇALHO-->
     <header>
         <img width="50" id="githublogo" src="{% static 'img/github.png' %}"
         <div class="container">
@@ -20,7 +21,9 @@
     </header>
 
     <div id="perfil">
-        <a href="{% url 'lista-perfis' %}"><button id="voltar">Voltar</button></a>
+        <div id="voltar">
+        <a href="{% url 'lista-perfis' %}"><button>Voltar</button></a>
+        </div>
         <img width="200" src="{{infos.img}}">
         <div>
             {% if perfil.nome %}
