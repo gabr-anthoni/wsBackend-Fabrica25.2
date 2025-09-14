@@ -62,6 +62,9 @@ def retirar_perfil(request, pk):
 # Alterar perfil da lista
 def alterar_perfil(request, pk):
     perfil = get_object_or_404(GitHubPerfil, pk=pk)
+    # Salvar o essencial.
+    img_save = perfil.img
+    nome_save = perfil.nome or perfil.login
 
     if request.method == 'POST':
         
@@ -87,11 +90,11 @@ def alterar_perfil(request, pk):
                 return redirect('lista-perfis')
             except Exception: # ERRO DE PERFIL JÁ NA LISTA
                 erro = f"Perfil '{username}' já está na lista"
-                return render(request, 'html/alterar.html', {'erro': erro})
+                return render(request, 'html/alterar.html', {'erro': erro,'img': img_save,'nome': nome_save})
             
             
         else: # ERRO DE PERFIL NÃO ENCONTRADO
             erro = f"Usuário '{username}' não encontrado."
-            return render(request, 'html/alterar.html', {'erro': erro})
+            return render(request, 'html/alterar.html', {'erro': erro,'img': img_save,'nome': nome_save})
 
-    return render(request, 'html/alterar.html', {'perfil': perfil})
+    return render(request, 'html/alterar.html', {'img': img_save,'nome': nome_save})

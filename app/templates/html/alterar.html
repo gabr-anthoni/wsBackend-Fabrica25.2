@@ -20,14 +20,10 @@
     </header>
     <div id="formulario">
         <div id="imagens">
-            <img id="img1" width="150" src="{{perfil.img}}"/>
+            <img id="img1" width="150" src="{{img}}"/>
             <img id="img2" width="150" src="{% static 'img/perfil.jpg' %}"/>
         </div>
-        {% if perfil.nome %}
-            <h1>Alterar perfil de {{perfil.nome}}</h1>
-        {% else %}
-            <h1>Alterar perfil de {{perfil.login}}</h1>
-        {% endif %}
+        <h1>Alterar perfil de {{nome}}</h1>
 
         <p id="paragrafo">Utilize o login de outro perfil</p>
 
