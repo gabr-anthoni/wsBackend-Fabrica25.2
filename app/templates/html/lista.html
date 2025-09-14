@@ -75,9 +75,16 @@
                 </div>
             {% endfor %}
         {% else %}
+
             <p id="Vazio">Nenhum perfil encontrado</p>
+
         {% endif %}
+
         <a href="{% url 'adicionar-perfil' %}"><button id="adicionar">Adicionar perfil</button></a>
+        
+        {% if perfis|length > 1 %}
+            <a href="{% url 'limpar-lista' %}"><button id="adicionar">Limpar lista</button></a>
+        {% endif %}
     </div>
 </body>
 </html>

@@ -98,3 +98,11 @@ def alterar_perfil(request, pk):
             return render(request, 'html/alterar.html', {'erro': erro,'img': img_save,'nome': nome_save})
 
     return render(request, 'html/alterar.html', {'img': img_save,'nome': nome_save})
+
+def limpar_lista(request):
+    primeiro_perfil = GitHubPerfil.objects.all().first()
+    ultimo_perfil = GitHubPerfil.objects.all().last()
+    if request.method == 'POST':
+        GitHubPerfil.objects.all().delete()
+        return redirect('lista-perfis')
+    return render(request, 'html/cls.html', {"img1": primeiro_perfil.img, "img2": ultimo_perfil.img})

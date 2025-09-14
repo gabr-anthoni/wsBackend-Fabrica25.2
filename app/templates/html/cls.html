@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitList | Limpar</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cls.css' %}">
+</head>
+<body>
+    <header>
+        <img width="50" id="githublogo" src="{% static 'img/github.png' %}"
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'lista-perfis' %}">Lista</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="parte">
+        <div>
+            <img id="img1" width="150" src="{{img1}}">
+            <img id="img2" width="150" src="{% static 'img/perfil.jpg' %}">
+            <img id="img3" width="150" src="{{img2}}">
+        </div>
+        <div id="alinhar">
+            <h1>Deseja limpar a lista?</h1>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Limpar</button>
+                <a href="{% url 'lista-perfis' %}"><button type="button">Voltar</button></a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
