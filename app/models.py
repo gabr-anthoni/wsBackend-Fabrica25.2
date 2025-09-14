@@ -26,7 +26,7 @@ class GitHubPerfil(models.Model):
     # Como ele vai aparecer lá no django Admin
     def __str__(self):
         if self.nome:
-            return f"{self.nome} | {self.login}" # Se tiver nome
+            return f"{self.nome} ({self.login})" # Se tiver nome
         else:
             return self.login # Se apenas tiver o login
     

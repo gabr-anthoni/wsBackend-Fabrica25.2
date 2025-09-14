@@ -1,20 +1,38 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitList | Retirar</title>
+    <link rel="stylesheet" href="{% static 'css/DELETE.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body>
-    <form method="post">
-        {% csrf_token %}
-        <img src="{{perfil.img}}"/>
-        {% if perfil.nome %}
-            <p>Deseja retirar {{perfil.nome}}?</p>
-        {% else %}
-            <p>Deseja retirar {{perfil.login_nome}}?</p>
-        {% endif %}
-        <button type="submit">Retirar</button>
-    </form>
+    <header>
+        <img width="50" id="githublogo" src="{% static 'img/github.png' %}"
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'lista-perfis' %}">Lista</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="delete">
+        <form method="post">
+            {% csrf_token %}
+            <img  width="250" src="{{perfil.img}}"/>
+            {% if perfil.nome %}
+                <h1>Deseja retirar {{perfil.nome}} da sua lista de perfis?</h1>
+            {% else %}
+                <h1>Deseja retirar {{perfil.login}} da sua lista de perfis?</h1>
+            {% endif %}
+            <div id="buttons">
+                <button type="submit">Remover</button>
+                <!--Se retirar o ( type="button" ) ele vai retirar o perfil mesmo se você voltar-->
+                <a href="{% url 'lista-perfis' %}"><button type="button">Voltar</button></a>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

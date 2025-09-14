@@ -1,20 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitList | List</title>
+    <link rel="stylesheet" href="{% static 'css/liststyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body>
+    <header>
+        <img width="50" id="githublogo" src="{% static 'img/github.png' %}"
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'lista-perfis' %}">Lista</a></li>
+            </ul>
+        </div>
+    </header>
     <div>
-        <h1>Perfis:</h1>
+        <h1>Lista de perfis:</h1>
         {% if perfis %}
             {% for perfil in perfis %}
-                <div>
+                <div id="perfil">
 
                     <img width="150" src="{{ perfil.img }}"/>
 
-                    <div>
+                    <div id="informações">
 
                         <div>
                         {% if perfil.nome %}
@@ -26,21 +38,46 @@
                         </div>
 
                         {% if perfil.bio %}
-                            <p>{{perfil.bio}}</p>
+                            {% if perfil.bio|length > 80 %} <!--Quantidade de carcteres até ele quebrar a linha-->
+                                <p id="bio">{{ perfil.bio|slice:":80" }}</p>
+                                <p id="bio">{{ perfil.bio|slice:":80" }}</p>
+
+                                <div id="opções">
+                                    <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
+                                    <a href="{% url 'retirar-perfil' perfil.id %}"><button>Remover da lista</button></a>
+                                    <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
+                                </div>
+                            {% else %}
+                                <p id="bio">{{perfil.bio}}</p>
+                                <div id="opções2">
+                                    <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
+                                    <a href="{% url 'retirar-perfil' perfil.id %}"><button>Remover da lista</button></a>
+                                    <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
+                                </div>
+                            {% endif %}
                         {% endif %}
 
-                        <div>
-                            <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
-                            <a href="{% url 'retirar-perfil' perfil.id %}"><button>Retirar da lista</button></a>
-                            <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
-                        </div>
+                        {% if not perfil.bio and perfil.nome %}
+                            <div id="opções3">
+                                <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
+                                <a href="{% url 'retirar-perfil' perfil.id %}"><button>Remover da lista</button></a>
+                                <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
+                            </div>
+                        {% elif not perfil.bio and not perfil.nome %}
+                            <div id="opções4">
+                                <a href="{{ perfil.site }}" target="_blank"><button>Ver Perfil Completo</button></a>
+                                <a href="{% url 'retirar-perfil' perfil.id %}"><button>Remover da lista</button></a>
+                                <a href="{% url 'alterar-perfil' perfil.id %}"><button>Alterar</button></a>
+                            </div>
+                        {% endif %}
+
                     </div>
                 </div>
             {% endfor %}
         {% else %}
-            <p>Nenhum perfil encontrado</p>
+            <p id="Vazio">Nenhum perfil encontrado</p>
         {% endif %}
-        <a href="{% url 'adicionar-perfil' %}"><button>Adicionar perfil</button></a>
+        <a href="{% url 'adicionar-perfil' %}"><button id="adicionar">Adicionar perfil</button></a>
     </div>
 </body>
 </html>

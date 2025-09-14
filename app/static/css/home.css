@@ -1,0 +1,57 @@
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0D1117;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@keyframes girar {
+    0% { /* 0% */
+    transform: rotate(0deg);
+    }
+    100% { /* 100% */
+    transform: rotate(360deg);
+    }
+}
+
+#imggirar {
+    filter: invert();
+    animation-name: girar;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+#começo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 65vh;
+}
+
+#paragrafo {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #212830;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    border: #3D444D solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: background-color 0.5s;
+}
+
+button:hover {
+    background-color: #262C36;
+}

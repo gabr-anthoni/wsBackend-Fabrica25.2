@@ -1,19 +1,40 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitList | Adionar</title>
+    <link rel="stylesheet" href="{% static 'css/POST-PUT.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
 </head>
 <body>
-    <div>
+    <header>
+        <img width="50" id="githublogo" src="{% static 'img/github.png' %}"
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'lista-perfis' %}">Lista</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="formulario">
+        <img width="150" src="{% static 'img/perfil.jpg' %}"/>
+        <h1>Adicione um perfil usando o login</h1>
+
+        {% if erro %}
+            <p id="erro">{{erro}}</p>
+        {% endif %}
+
         <form method="post">
             {% csrf_token %}
-            {% if erro %}
-                <p>{{erro}}</p>
-            {% endif %}
             <input type="text" name="login-perfil">
-            <button type="submit">Adionar</button>
+
+            <div id="submit">
+                <button type="submit" id="button1">Salvar</button>
+                <a href="{% url 'lista-perfis' %}" id="button2"><button type="button">Voltar</button></a>
+            </div>
+
         </form>
     </div>
 </body>

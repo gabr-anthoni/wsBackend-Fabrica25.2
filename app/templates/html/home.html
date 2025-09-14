@@ -1,14 +1,27 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitList | Home</title>
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
-    <div>
+    <header>
+        <img width="50" id="githublogo" src="{% static 'img/github.png' %}"
+        <div class="container">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'lista-perfis' %}">Lista</a></li>
+            </ul>
+        </div>
+    </header>
+    <div id="começo">
         <h1>GitList</h1>
-        <p>Faça uma lista com usuários do GitHub</p>
+        <img width="200" id="imggirar" src="{% static 'img/github.png' %}">
+        <p id="paragrafo">Faça uma lista com perfis de usuários do GitHub</p>
         <a href="{% url 'lista-perfis' %}"><button>Começar</button></a>
     </div>
 </body>

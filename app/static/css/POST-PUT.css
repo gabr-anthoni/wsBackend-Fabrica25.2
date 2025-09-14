@@ -1,0 +1,86 @@
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0D1117;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1{
+    font-size: 25px;
+    display: flex;
+    text-align: center;
+}
+
+#paragrafo {
+    margin-top: 0;
+}
+
+button {
+    background-color: #212830;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    border: #3D444D solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: background-color 0.5s;
+}
+
+button:hover {
+    background-color: #262C36;
+}
+
+input {
+    color: white;
+    border: #3D444D solid 1px;
+    border-radius: 5px;
+    background: none;
+    padding: 7px 40px;
+    transition: box-shadow 0.2s;
+}
+
+#erro {
+    color: crimson;
+    font-size: 10px;
+}
+
+input:focus {
+    outline: none;
+    border: #212830 solid 1px;
+    box-shadow: 0 0 0 2px #4493f8; /* azul com transparência */
+}
+
+img{
+    border-radius: 100%;
+}
+
+#img1{
+    margin-right: 10px;
+}
+
+#img2{
+    margin-left: 10px;
+}
+
+#formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+#submit {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}

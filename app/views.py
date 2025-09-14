@@ -87,7 +87,7 @@ def alterar_perfil(request, pk):
                 return redirect('lista-perfis')
             except Exception: # ERRO DE PERFIL JÁ NA LISTA
                 erro = f"Perfil '{username}' já está na lista"
-                return render(request, 'html/adicionar.html', {'erro': erro})
+                return render(request, 'html/alterar.html', {'erro': erro})
             
             
         else: # ERRO DE PERFIL NÃO ENCONTRADO

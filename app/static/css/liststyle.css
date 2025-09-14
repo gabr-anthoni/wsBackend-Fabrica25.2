@@ -1,0 +1,93 @@
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0D1117;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#Vazio {
+    font-size: 30px;
+    color: #7F858E
+}
+
+#perfil {
+    border: #3D444D solid 1px ;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+img {
+    border-radius: 100%;
+
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+#nome {
+    font-size: 25px;
+    margin: 0;
+}
+
+#login {
+    color: #7F858E;
+    margin-top: 0;
+}
+
+#bio {
+    font-size: 12px;
+}
+
+#opções1 { /* 2 linhas de descrição */
+    margin-right: 200px;
+}
+#opções2 { /* 1 linha de descrição */
+    margin-top: 40px;
+    margin-right: 200px;
+}
+#opções3 { /* Sem descrição mas com nome */
+    margin-top: 67px;
+    margin-right: 200px;
+}
+#opções4 { /* Sem descriçaõ e sem nome */
+    margin-top: 87px;
+    margin-right: 200px;
+}
+
+button {
+    background-color: #212830;
+    padding: 7px 12px;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+    border: #3D444D solid 1px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: background-color 0.5s;
+}
+
+button:hover {
+    background-color: #262C36;
+}
+
+#adicionar {
+    margin-bottom: 20px;
+}
